@@ -13,10 +13,10 @@ public class ListHouse implements Listable {
 	protected Listable list[];
 	
 	//Variable to store the number of items in the list
-	protected int numHouses;
+	protected int numItems;
 	
 	//variable to store the current position that has been accessed, of the list
-	protected int currentIndex;
+	protected int currentPos;
 	
 	//Constructor which assign the house information to variables
 	public ListHouse(String lastName, String firstName, int lotNumber,int price, int squareFeet, int bedRooms )
@@ -31,7 +31,7 @@ public class ListHouse implements Listable {
 	
 	//default constructor initializes the number of  items and list
 	public ListHouse(){
-		numHouses=0;
+		numItems=0;
 		list = new Listable[100];
 	}
 	
@@ -54,7 +54,7 @@ public class ListHouse implements Listable {
 	public String lastName()
 	{
 		return lastName;
-	}
+	}t
 	
 	public String firstName()
 	{
