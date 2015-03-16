@@ -64,9 +64,9 @@ public class ListHouse implements Listable {
 	{
 		return price;
 	}
-	public int sqareFeet()
+	public int lotNumber()
 	{
-		return squareFeet;
+		return lotNumber;
 	}
 	public int bedRooms()
 	{
