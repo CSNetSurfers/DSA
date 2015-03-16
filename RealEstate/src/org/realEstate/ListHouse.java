@@ -60,6 +60,10 @@ public class ListHouse implements Listable {
 	{
 		return firstName;
 	}
+	public int squareFeet()
+	{
+		return squareFeet; 
+	}
 	public int price()
 	{
 		return price;
