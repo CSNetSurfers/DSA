@@ -4,6 +4,8 @@
  */
 package org.realEstate;
 
+import java.io.IOException;
+
 /**
  *
  * @author user
@@ -15,6 +17,25 @@ public class RealEstate extends javax.swing.JFrame {
      */
     public RealEstate() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        try {
+
+            ListHouse house;
+            HouseFile.reset();
+            while (HouseFile.moreHouses()) {
+                house = HouseFile.getNextHouse();
+                list.add(house);
+            }
+            // display data of first house in the file
+            list.reset();
+            if (list.size() != 0) {
+
+                house = (ListHouse) list.nextHouse();
+                showHouse(house);
+            }
+            lblStatus.setText(list.size() + " houses in the list ");
+        } catch (Exception e) {
+        }
     }
 
     /**
@@ -26,21 +47,333 @@ public class RealEstate extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        lblStatus = new javax.swing.JLabel();
+        lblLotNumber = new javax.swing.JLabel();
+        lblFirstName = new javax.swing.JLabel();
+        lblLastName = new javax.swing.JLabel();
+        lblPrice = new javax.swing.JLabel();
+        lblSquareFeet = new javax.swing.JLabel();
+        lblBedroooms = new javax.swing.JLabel();
+        txtLotNumber = new javax.swing.JTextField();
+        txtFirstName = new javax.swing.JTextField();
+        txtLastName = new javax.swing.JTextField();
+        txtPrice = new javax.swing.JTextField();
+        txtSquareFeet = new javax.swing.JTextField();
+        txtBedrooms = new javax.swing.JTextField();
+        btnReset = new javax.swing.JButton();
+        btnAdd = new javax.swing.JButton();
+        btnClear = new javax.swing.JButton();
+        btnNext = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
+        btnFind = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Real Estate Program");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
+
+        jPanel1.setName(""); // NOI18N
+
+        lblStatus.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblStatus.setForeground(new java.awt.Color(204, 0, 0));
+
+        lblLotNumber.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblLotNumber.setText("Lot Number");
+        lblLotNumber.setName(""); // NOI18N
+
+        lblFirstName.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblFirstName.setText("First Name");
+
+        lblLastName.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblLastName.setText("Last Name");
+
+        lblPrice.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblPrice.setText("Price");
+
+        lblSquareFeet.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblSquareFeet.setText("Square Feet");
+
+        lblBedroooms.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblBedroooms.setText("Number of Bedrooms");
+
+        btnReset.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnReset.setText("RESET");
+        btnReset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResetActionPerformed(evt);
+            }
+        });
+
+        btnAdd.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnAdd.setText("ADD");
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
+            }
+        });
+
+        btnClear.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnClear.setText("CLEAR");
+        btnClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClearActionPerformed(evt);
+            }
+        });
+
+        btnNext.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnNext.setText("NEXT");
+        btnNext.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNextActionPerformed(evt);
+            }
+        });
+
+        btnDelete.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnDelete.setText("DELETE");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
+
+        btnFind.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnFind.setText("FIND");
+        btnFind.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFindActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblBedroooms)
+                    .addComponent(lblSquareFeet)
+                    .addComponent(lblPrice)
+                    .addComponent(lblLastName)
+                    .addComponent(lblFirstName)
+                    .addComponent(lblLotNumber)
+                    .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(txtLotNumber, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtFirstName, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtLastName, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtPrice, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtSquareFeet, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtBedrooms, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnNext, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnDelete, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                    .addComponent(btnFind, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtLotNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblLotNumber))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblFirstName))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtLastName, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                    .addComponent(lblLastName))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtPrice, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                    .addComponent(lblPrice))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtSquareFeet, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                    .addComponent(lblSquareFeet))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblBedroooms)
+                    .addComponent(txtBedrooms, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnAdd, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
+                    .addComponent(btnDelete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnFind, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    private static SortedList list = new SortedList();
+    ListHouse house;
+
+    private void clearHouse() {
+        txtLotNumber.setText("");
+        txtFirstName.setText("");
+        txtLastName.setText("");
+        txtPrice.setText("");
+        txtSquareFeet.setText("");
+        txtBedrooms.setText("");
+    }
+
+    private void showHouse(ListHouse house) {
+        txtLotNumber.setText(Integer.toString(house.getLotNumber()));
+        txtFirstName.setText(house.getFirstName());
+        txtLastName.setText(house.getLastName());
+        txtPrice.setText(Integer.toString(house.getPrice()));
+        txtSquareFeet.setText(Integer.toString(house.getSquareFeet()));
+        txtBedrooms.setText(Integer.toString(house.getBedRooms()));
+    }
+
+    private ListHouse getHouse() {
+        int lotNumber;
+        String firstName;
+        String lastName;
+        int price;
+        int squareFeet;
+        int bedRooms;
+        lotNumber = Integer.parseInt(txtLotNumber.getText());
+        firstName = txtFirstName.getText().trim();
+        lastName = txtLastName.getText().trim();
+        price = Integer.parseInt(txtPrice.getText());
+        squareFeet = Integer.parseInt(txtSquareFeet.getText());
+        bedRooms = Integer.parseInt(txtBedrooms.getText());
+        ListHouse house = new ListHouse(lotNumber, firstName, lastName, price,
+                squareFeet, bedRooms);
+        return house;
+    }
+
+    private void btnFindActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindActionPerformed
+        int lotNumber;
+        try {
+            lotNumber = Integer.parseInt(txtLotNumber.getText());
+            house = new ListHouse(lotNumber, "", "", 0, 0, 0);
+            if (list.find(house)) {
+                house = (ListHouse) list.getHouse(house);
+                showHouse(house);
+                lblStatus.setText("House is in the list");
+            } else {
+                lblStatus.setText("House is not in the list");
+            }
+        } catch (NumberFormatException nfe) {
+            // Text field info incorrectly formated
+            lblStatus.setText("Incorrect number format " + nfe.getMessage());
+        }
+
+    }//GEN-LAST:event_btnFindActionPerformed
+
+    private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
+        list.reset();
+        if (list.size() == 0) {
+            clearHouse();
+        } else {
+            house = (ListHouse) list.nextHouse();
+            showHouse(house);
+        }
+        lblStatus.setText("List reset");
+
+    }//GEN-LAST:event_btnResetActionPerformed
+
+    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
+        if (list.size() == 0) {
+            lblStatus.setText("list is empty!");
+        } else {
+            house = (ListHouse) list.nextHouse();
+            showHouse(house);
+            lblStatus.setText("Next house displayed");
+        }
+    }//GEN-LAST:event_btnNextActionPerformed
+
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        try {
+            house = getHouse();
+            if (list.find(house)) {
+                lblStatus.setText("Lot number exists!");
+            } else {
+                list.add(house);
+                lblStatus.setText("House added succesfully");
+            }
+        } catch (NumberFormatException nfe) {
+            // Text field info incorrectly formated
+             lblStatus.setText("Incorrect number format " + nfe.getMessage());
+        }
+
+    }//GEN-LAST:event_btnAddActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        try {
+            house = getHouse();
+            if (list.find(house)) {
+                list.delete(house);
+                lblStatus.setText("House deleted succesfully");
+            } else {
+                lblStatus.setText("Incorrect Lot number");
+            }
+        } catch (NumberFormatException nfe) {
+            // Text field info incorrectly formated
+             lblStatus.setText("Incorrect number format " + nfe.getMessage());
+        }
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+        clearHouse();
+        lblStatus.setText(list.size() + " houses in list");
+    }//GEN-LAST:event_btnClearActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        ListHouse house;
+
+        try {
+            // Store info from list into house file
+            HouseFile.rewrite();
+            list.reset();
+            int length = list.size();
+            for (int counter = 1; counter <= length; counter++) {
+                house = (ListHouse) list.nextHouse();
+                HouseFile.writeToFile(house);
+            }
+            HouseFile.close();
+        } catch (IOException ioe) {
+            System.out.println(ioe.getMessage());
+        }
+        // exit the program
+        System.exit(0); 
+
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
@@ -73,9 +406,31 @@ public class RealEstate extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new RealEstate().setVisible(true);
+
             }
         });
+
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnClear;
+    private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnFind;
+    private javax.swing.JButton btnNext;
+    private javax.swing.JButton btnReset;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblBedroooms;
+    private javax.swing.JLabel lblFirstName;
+    private javax.swing.JLabel lblLastName;
+    private javax.swing.JLabel lblLotNumber;
+    private javax.swing.JLabel lblPrice;
+    private javax.swing.JLabel lblSquareFeet;
+    private javax.swing.JLabel lblStatus;
+    private javax.swing.JTextField txtBedrooms;
+    private javax.swing.JTextField txtFirstName;
+    private javax.swing.JTextField txtLastName;
+    private javax.swing.JTextField txtLotNumber;
+    private javax.swing.JTextField txtPrice;
+    private javax.swing.JTextField txtSquareFeet;
     // End of variables declaration//GEN-END:variables
 }
