@@ -339,6 +339,7 @@ public class RealEstate extends javax.swing.JFrame {
             house = getHouse();
             if (list.find(house)) {
                 list.delete(house);
+                clearHouse();
                 lblStatus.setText("House deleted succesfully");
             } else {
                 lblStatus.setText("Incorrect Lot number");
